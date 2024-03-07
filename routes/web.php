@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\eventController;
+use App\Http\Controllers\eventDetailController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +19,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/' , [eventController::class , 'displayEvent']);
+Route::get('/eventDetail' , [eventDetailController::class , 'displayEventDetail']);
+
+Route::get('/login' , [AuthController::class , 'displayLogin']);
+Route::get('/register' , [AuthController::class , 'displayRegister']);
