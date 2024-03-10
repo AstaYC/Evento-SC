@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Firebase\JWT\JWT;
 
 class AuthController extends Controller
 {
@@ -17,24 +18,43 @@ class AuthController extends Controller
         return view('Auth.register');
     }
 
+    public function register(Request $request){
+        $request->validate([
+            'nom' => 'required|string|max:255',
+            'email' => 'required|email|unique:users|max:255',
+            'password' => 'required|min:6|confirmed',
+        ]);
+        $user = new User();
+        $user->nom = $request->input('nom');
+        $user->email = $request->input('email');
+        $user->password = bcrypt($request->input('password'));
+        $user->role_id = '3';
+        $user->save();
 
-    public function register(Request $request)
-    {
-        $validatedData = $request->validate([
-            'name' => 'required|max:55',
-            'email' => 'email|required|unique:users',
-            'password' => 'required|confirmed'
+        if($user){
+            
+            return redirect('/login')->with('status', 'lajoutage est bien faite');
+        }else{
+            return redirect('/login')->with('status', 'Une probleme dans la registration');
+        }
+
+    }
+    
+    public function login(Request $request){
+
+        $request->validate([
+            'email' => 'required|email|max:255',
+            'password' => 'required|string|min:6',
         ]);
 
-        $validatedData['password'] = Hash::make($validatedData['password']);
-        $valisateData['role_id'] = '3';
+        
+        $user = User::where('email', $request->email)->first();
 
-        $user = User::create($validatedData);
+        if(!$user || !Hash::check($request->password , $user->password)){
+                return back()->with('error',"l' Email Ou Le Mot De Passe est incorrect");
+        }
+    
+        return redirect('/');
 
-        $token = $this->createJwtToken($user->id);
-
-        // return response()->json(['user' => $user, 'token' => $token], 201);
-        return redirect()->route('newsletter.index')->cookie('jwt', $token, 60);
     }
-
 }
