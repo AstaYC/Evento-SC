@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\eventController;
 use App\Http\Controllers\eventDetailController;
+use App\Http\Controllers\ForgotPasswordController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,12 +17,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/register', [AuthController::class, 'register']);
+
 
 Route::get('/' , [eventController::class , 'displayEvent']);
 Route::get('/eventDetail' , [eventDetailController::class , 'displayEventDetail']);
 
 Route::get('/login' , [AuthController::class , 'displayLogin']);
 Route::get('/register' , [AuthController::class , 'displayRegister']);
+
+
+
+// Reset Password //
+
+Route::get('/forgotPassword', [ForgotPasswordController::class, 'forgotPasswordForm']);
+Route::post('/forgotPassword', [ForgotPasswordController::class, 'sendEmail']);
+
+Route::get('resetPassword/{token}', [ForgotPasswordController::class, 'resetPasswordForm']);
+Route::post('resetPassword/{token}', [ForgotPasswordController::class, 'changePassword']);
