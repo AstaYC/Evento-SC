@@ -45,7 +45,7 @@ class EventController extends Controller
         $event->heure = $data['heure'];
         $event->lieu = $data['lieu'];
         $event->places = $data['places'];
-        $event->user_id = '2';
+        $event->user_id = session('user_id');
         $event->categorie_id = $data['categorie_id'];
     
         $event->save();
@@ -85,7 +85,6 @@ class EventController extends Controller
         $event->heure = $data['heure'];
         $event->lieu = $data['lieu'];
         $event->places = $data['places'];
-        $event->user_id = '2';
         $event->categorie_id = $data['categorie_id'];
 
         $event->update();
@@ -101,8 +100,23 @@ class EventController extends Controller
         $event = Event::find($request->id);
         $event->delete();
 
-        return redirect('/event/display')->with('status' , 'La Suppression Est Bien Faite');
+        return redirect('/event')->with('status' , 'La Suppression Est Bien Faite');
     }
 
+    public function typeValidation(Request $request){
+        $request->validate([
+            'id' => 'required',
+            'validation' => 'required',
+        ]);
+
+        if($request->validation == 'automatic'){
+            Event::where('id', $request->id)->update(['type_validation' => 'automatic']);
+        }
+        else{
+            Event::where('id', $request->id)->update(['type_validation' => 'manual']);
+        }
+
+        return redirect('/event');
+    }
 
 }

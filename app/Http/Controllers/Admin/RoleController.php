@@ -5,15 +5,15 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Role;
 use App\Models\Route;
-use App\Models\Permission;
+use App\Models\role_route;
 use Illuminate\Http\Request;
 
 class RoleController extends Controller
 {
       public function displayRole(){
-        $roles = Role::all();
+        $rolesWithRoutes = Role::with('routes')->get();
         $routes = Route::all();
-        return view('role',compact('roles','routes'));
+        return view('Admin.RoleTable',compact('rolesWithRoutes','routes'));
       }
 
       public function addRole(Request $request){
@@ -36,7 +36,7 @@ class RoleController extends Controller
           if(count($ids) > 0){
               
             foreach($ids as $id){
-              $permission = new Permission();
+              $permission = new role_route();
               $permission->role_id = $lasteId;
               $permission->route_id = $id;
               $permission->save();
@@ -63,14 +63,14 @@ class RoleController extends Controller
         $role = Role::find($request->role_id);
         $role->nom = $request->nom;
         $role->update();
-        $permissions = Permission::where('role_id' , $request->role_id)->get();
+        $permissions = role_route::where('role_id' , $request->role_id)->get();
         foreach($permissions as $permission){
             $permission->delete();
         }
        
         if(count($ids) > 0){
         foreach($ids as $id){
-            $permission =new Permission();
+            $permission =new role_route();
             $permission->role_id = $request->role_id;
             $permission->route_id = $id;
             $permission->save();

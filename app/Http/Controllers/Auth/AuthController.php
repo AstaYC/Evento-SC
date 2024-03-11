@@ -49,13 +49,19 @@ class AuthController extends Controller
         ]);
 
         
-        $user = User::where('email', $request->email)->first();
-
+        $user = User::join('roles', 'users.role_id', '=', 'roles.id')
+            ->where('users.email', $request->email)
+            ->first(['users.*', 'roles.nom as user_role']); 
+        
         if(!$user || !Hash::check($request->password , $user->password)){
                 return back()->with('error',"l' Email Ou Le Mot De Passe est incorrect");
         }
+        session(['user_id' => $user->id]);
+        session(['user_role' => $user->user_role]);
+        session(['user_nom' => $user->nom]);
+
     
-        return redirect('/');
+        return redirect('/home');
 
     }
 }

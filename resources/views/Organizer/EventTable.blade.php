@@ -142,7 +142,7 @@
                         <label for="CategorieName">Organization</label>
                         <input type="text" class="form-control" id="CategorieName"  name="organization" required>
                         <label for="CategorieName">Description</label>
-                        <input type="text" class="form-control" id="CategorieName"  name="description" required>
+                        <textarea type="text" class="form-control" id="CategorieName"  name="description" required></textarea>
                         <label for="CategorieName">Date</label>
                         <input type="date" class="form-control" id="CategorieName"  name="date" required>
                         <label for="CategorieName">Heure</label>
@@ -160,7 +160,7 @@
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" name="add" class="btn btn-primary">Add Categorie</button>
+                        <button type="submit" name="add" class="btn btn-primary">Add Event</button>
                       </div>
                     </form>
                   </div>
@@ -208,6 +208,10 @@
   									<a href="#" class="delete" title="Delete" data-toggle="modal" data-target="#deleteeventModal{{$event->id}}">
 											<i class="material-icons">&#xE5C9;</i>
 										</a>
+
+                    <a href="#" class="validation" title="validation" data-toggle="modal" data-target="#validationeventModal{{$event->id}}">
+											<i class="material-icons">&#xe877;</i>
+										</a>
 									</td>
 								</tr>
                 @endforeach
@@ -244,7 +248,7 @@
               <label for="CategorieName">Organization</label>
               <input type="text" class="form-control" id="CategorieName"  name="organization" value="{{$event->organization}}" required>
               <label for="CategorieName">Description</label>
-              <input type="text" class="form-control" id="CategorieName"  name="description" value="{{$event->description}}" required>
+              <textarea type="text" class="form-control" id="CategorieName"  name="description" required>{{$event->description}}</textarea>
               <label for="CategorieName">Date</label>
               <input type="date" class="form-control" id="CategorieName"  name="date" value="{{$event->date}}" required>
               <label for="CategorieName">Heure</label>
@@ -262,7 +266,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" name="add" class="btn btn-primary">Add Event</button>
+              <button type="submit" name="add" class="btn btn-primary">update Event</button>
             </div>
           </form>
         </div>
@@ -298,6 +302,39 @@
           </div>
         </div>
       </div>
+      {{--  end delete model --}}
+
+      {{-- validation model --}}
+
+      <div class="modal" id="validationeventModal{{$event->id}}">										
+        <div class="modal-dialog">
+              <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Type de validation Event</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal Body -->
+                <div class="modal-body">
+                  <!-- Delete medicine form -->
+                  <form method="POST" action="/event/typeValidation">
+                  @csrf
+                    <input type="hidden" name="action" value="delete">
+                    <input type="hidden" name="id" value="{{$event->id}}">
+
+                    <label for="validation">Type de validation</label>
+                    <select class="form-control" name="validation" id="">
+                      <option value="automatic">Automatic</option>
+                      <option value="manual">Manual</option>
+                    </select>                      
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                      <button type="submit" class="btn btn-danger">validation Event</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
   @endforeach
-  {{--  end delete model --}}
   @endsection

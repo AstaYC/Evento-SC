@@ -63,7 +63,7 @@
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
-			<a href="#" class="nav-link">Roles</a>
+			<a href="#" class="nav-link">Categories</a>
 			<form action="#">
 				<div class="form-input">
 					<input type="search" placeholder="Search...">
@@ -95,7 +95,6 @@
              {{session('status')}}
            </div>
          @endif
-         
 			<div class="head-title">
 				<div class="left">
 					<h1>My Categories</h1>
@@ -110,14 +109,14 @@
 						<div class="table-title">
 							<div class="row">
 								<div class="col-sm-5">
-									<h2>Roles <b>Management</b></h2>
+									<h2>Categories <b>Management</b></h2>
 								</div>
 								<div class="modal" id="addCategorieModal">
 									<div class="modal-dialog">
 										<div class="modal-content">
 											<!-- Modal Header -->
 											<div class="modal-header">
-												<h4 class="modal-title text-primary">Add New Role</h4>
+												<h4 class="modal-title text-primary">Add New Categorie</h4>
 												<button type="button" class="close" data-dismiss="modal">&times;</button>
 											</div>
 											<!-- Modal Body -->
@@ -127,12 +126,12 @@
 													@csrf
                                                     <!-- Input fields for medicine details -->
 													<div class="form-group">
-														<label for="CategorieName">Role Name:</label>
+														<label for="CategorieName">Categorie Name:</label>
 														<input type="text" class="form-control" id="CategorieName" placeholder="CategorieName" name="nom" required>
 													</div>
 													<div class="modal-footer">
 														<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-														<button type="submit" name="add" class="btn btn-primary">Add Role</button>
+														<button type="submit" name="add" class="btn btn-primary">Add Categorie</button>
 													</div>
 												</form>
 											</div>
@@ -141,7 +140,7 @@
 								</div>
 								<div class="col-sm-7">
 									<!-- <a href="" class="btn btn-secondary"><i class="material-icons">&#xE147;</i> <span>Add New Categories</span></a> -->
-									<a href="" class="btn btn-secondary" data-toggle="modal" data-target="#addCategorieModal"><i class="material-icons">&#xE147;</i> <span>Add New ROle</span></a>				
+									<a href="" class="btn btn-secondary" data-toggle="modal" data-target="#addCategorieModal"><i class="material-icons">&#xE147;</i> <span>Add New WiKi</span></a>				
 								</div>
 							</div>
 						</div>
@@ -149,8 +148,7 @@
 							<thead>
 								<tr>
 									<th>ID</th>
-									<th>Nom du Role</th>											
-									<th>Les Permissions</th>											
+									<th>Nom de Categorie</th>											
 									<th>Action</th>
 								</tr>
 							</thead>
