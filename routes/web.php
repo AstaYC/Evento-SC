@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\eventController;
-use App\Http\Controllers\eventDetailController;
-use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\Admin\CategorieController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Organizer\EventController;
+use App\Http\Controllers\User\EventDetailController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,11 +23,31 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
 
 
-Route::get('/' , [eventController::class , 'displayEvent']);
-Route::get('/eventDetail' , [eventDetailController::class , 'displayEventDetail']);
+Route::get('/eventDetail' , [EventDetailController::class , 'displayEventDetail']);
 
 Route::get('/login' , [AuthController::class , 'displayLogin']);
 Route::get('/register' , [AuthController::class , 'displayRegister']);
+
+// Event Crud //
+
+Route::get('/event' , [EventController::class , 'displayEvent']);
+Route::post('/event/add' , [EventController::class , 'addEvent']);
+Route::post('/event/update' , [EventController::class , 'updateEvent']);
+Route::post('/event/delete' , [EventController::class , 'deleteEvent']);
+
+
+//  Categorie Crud  //
+Route::get('/categorie' , [CategorieController::class , 'displayCategorie']);
+Route::post('/categorie/add' , [CategorieController::class , 'addCategorie']);
+Route::post('/categorie/update' , [CategorieController::class , 'updateCategorie']);
+Route::post('/categorie/delete' , [CategorieController::class , 'deleteCategorie']);
+
+
+//  Users Crud//
+
+Route::get('/user' , [UserController::class , 'displayUser']);
+Route::post('/user/update' , [UserController::class , 'updateUser']);
+Route::post('/user/delete' , [UserController::class , 'deleteUser']);
 
 
 

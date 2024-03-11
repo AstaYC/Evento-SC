@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class eventDetailController extends Controller
+class EventDetailController extends Controller
 {
     public function displayEventDetail(){
         return view('User.EventDetail');
