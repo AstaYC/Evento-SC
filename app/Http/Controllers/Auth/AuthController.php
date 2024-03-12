@@ -59,6 +59,7 @@ class AuthController extends Controller
         session(['user_id' => $user->id]);
         session(['user_role' => $user->user_role]);
         session(['user_nom' => $user->nom]);
+        session(['role_id' => $user->role_id]);
 
     
         return redirect('/home');

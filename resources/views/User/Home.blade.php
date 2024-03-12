@@ -5,9 +5,14 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <div class="section_title mb-80">
+                <div class="section_title mb-80 d-flex justify-content-between">
                     <h3 class="wow fadeInRight" data-wow-duration="1s" data-wow-delay=".3s">Performer</h3>
+                    <form class="form-inline">
+                        <input class="form-control mr-sm-2 bg-dark text-white" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
+                    </form>
                 </div>
+                
             </div>
         </div>
         <div class="row justify-content-center">

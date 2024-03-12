@@ -16,6 +16,7 @@ class role_route extends Model
     public $timestamps = false;
     protected $table = 'role_route';
 
+    
     public function role()
     {
         return $this->belongsTo(Role::class);
