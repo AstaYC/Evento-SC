@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Organizer\EventController;
 use App\Http\Controllers\User\EventDetailController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\User\ReservationController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Middleware\HasPermission;
 use Illuminate\Support\Facades\Route;
@@ -27,6 +28,8 @@ Route::get('/login' , [AuthController::class , 'displayLogin']);
 Route::get('/register' , [AuthController::class , 'displayRegister']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
+Route::get('/logout', [AuthController::class, 'logout']);
+
 
 
 // Reset Password //
@@ -39,6 +42,13 @@ Route::post('resetPassword/{token}', [ForgotPasswordController::class, 'changePa
 //  Home //
 Route::get('/home' , [HomeController::class , 'home']);
 Route::get('/home/eventDetail/{id}' , [EventDetailController::class , 'displayEventDetail']);
+
+// Search //
+Route::get('/search/{keyword?}' , [HomeController::class , 'search']);
+
+//Filter
+Route::get('/filtre/{filtre?}' , [HomeController::class , 'filtre']);
+
 
 Route::middleware(HasPermission::class)->group(function () {
 
@@ -72,7 +82,12 @@ Route::middleware(HasPermission::class)->group(function () {
        //  Event Validation //
        Route::get('/eventValidation' , [EventValidationController::class , 'displayEventValidation']);
        Route::post('/eventValidation/valider' , [EventValidationController::class , 'validerEvent']);
-
+       
+       // Reservation //
+       Route::get('/reservation' , [ReservationController::class , 'DisplayReservation']);
+       Route::post('/reservation/validation' , [ReservationController::class , 'acceptReservation']);
+       Route::post('/reservationTicket' , [ReservationController::class , 'addRereservation']);
+       
     });
 
 

@@ -1,6 +1,18 @@
 @extends('layout.layout')
 @section('content')
 @foreach($events as $event)
+@if($errors->any())
+<ul>
+  <li>
+   {{$errors}}
+  </li>
+</ul>
+@endif
+@if(session('status'))
+<div class="alert alert-success">
+ {{session('status')}}
+</div>
+@endif
 <div class="about_area black_bg">
     <div class="container">
         <div class="row justify-content-center">
@@ -25,7 +37,11 @@
                 <div class="about_info pl-68">
                     <h4 class=" wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".5s">C'est Quoi "{{$event->titre}}" Event</h4>
                     <p  class=" wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".6s">{{$event->description}}</p>
-                    <a href="#" class="boxed-btn3  wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".7s">Buy Tickets</a>
+                    <form action="/reservationTicket" method="POST">
+                        @csrf
+                        <input type="hidden" name="id" value="{{$event->id}}">
+                        <button type="submit" class="boxed-btn3  wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".7s">Buy Tickets</button>
+                    </form>
                 </div>
             </div>
         </div>

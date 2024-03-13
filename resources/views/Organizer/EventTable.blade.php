@@ -2,51 +2,31 @@
 @section('content')
 	<!-- SIDEBAR -->
 	<section id="sidebar">
-		<a href="#" class="brand">
+		<a href="" class="brand">
 			<i class='bx bxs-smile'></i>
-			<span class="text">Admin</span>
+			<span class="text">Evento Espace d'Organisateur</span>
 		</a>
 		<ul class="side-menu top">
-			<li lass="active">
-				<a href="/user">
+			<li class="active">
+				<a href="/event">
 					<i class='bx bxs-group' ></i>
-					<span class="text">USers</span>
+					<span class="text">Events</span>
 				</a>
 			</li>
 			<li  >
-				<a href="/wiki">
+				<a href="/reservation">
 					<i class='bx bxs-shopping-bag-alt' ></i>
-					<span class="text">WiKis</span>
-				</a>
-			</li>
-			<li c>
-				<a href="/categorie">
-					<i class='bx bxs-doughnut-chart' ></i>
-					<span class="text">Categories</span>
-				</a>
-			</li>
-			<li >
-				<a href="/tag">
-					<i class='bx bxs-message-dots' ></i>
-					<span class="text">Tags</span>
-				</a>
-			</li>
-			<li class="active">
-				<a href="/wikiArchive">
-				    <i class='bx bxs-archive' ></i>
-					<span class="text">Les Wikis Archivee</span>
-				</a>
-			</li>
-            <li>
-				<a href="/dachboard">
-				    <i class='bx bxs-dashboard'></i>
-					<span class="text">Dachboard</span>
+					<span class="text">Reservation Validation</span>
 				</a>
 			</li>
 		</ul>
 		<ul class="side-menu">
 
 			<li>
+        <a href="/home" class="logout">
+					<i class='bx bxs-log-out-circle' ></i>
+					<span class="text-info">HOME</span>
+				</a>
 				<a href="/logout" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
@@ -63,7 +43,7 @@
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
-			<a href="#" class="nav-link">WiKis Archivée</a>
+			<a href="#" class="nav-link"> Events</a>
 			<form action="#">
 				<div class="form-input">
 					<input type="search" placeholder="Search...">
@@ -97,7 +77,7 @@
      @endif
 			<div class="head-title">
 				<div class="left">
-					<h1>My Wikis Archivée</h1>
+					<h1>My Events Management</h1>
 				</div>
 				
 			</div>
@@ -113,7 +93,7 @@
 								</div>
                 <div class="col-sm-7">
 									<!-- <a href="" class="btn btn-secondary"><i class="material-icons">&#xE147;</i> <span>Add New Categories</span></a> -->
-									<a href="" class="btn btn-secondary" data-toggle="modal" data-target="#addeventModal"><i class="material-icons">&#xE147;</i> <span>Add New WiKi</span></a>				
+									<a href="" class="btn btn-secondary" data-toggle="modal" data-target="#addeventModal"><i class="material-icons">&#xE147;</i> <span>Add New Events</span></a>				
 								</div>
 							</div>
 						</div>
@@ -125,7 +105,7 @@
                 <div class="modal-content">
                   <!-- Modal Header -->
                   <div class="modal-header">
-                    <h4 class="modal-title text-primary">Add New Categorie</h4>
+                    <h4 class="modal-title text-primary">Add New Events</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                   </div>
                   <!-- Modal Body -->
@@ -229,7 +209,7 @@
       <div class="modal-content">
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title text-primary">Add New Event</h4>
+          <h4 class="modal-title text-primary">Update Event</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <!-- Modal Body -->
