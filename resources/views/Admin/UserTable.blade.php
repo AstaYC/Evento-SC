@@ -5,48 +5,40 @@
 <section id="sidebar">
     <a href="#" class="brand">
         <i class='bx bxs-smile'></i>
-        <span class="text">Admin</span>
+        <span class="text">Evento Espace d'Admin</span>
     </a>
     <ul class="side-menu top">
         <li>
-            <a href="/user">
-                <i class='bx bxs-group' ></i>
-                <span class="text">USers</span>
-            </a>
-        </li>
-        <li  >
-            <a href="/wiki">
-                <i class='bx bxs-shopping-bag-alt' ></i>
-                <span class="text">WiKis</span>
-            </a>
-        </li>
-        <li class="active">
             <a href="/categorie">
-                <i class='bx bxs-doughnut-chart' ></i>
+                <i class='bx bxs-group' ></i>
                 <span class="text">Categories</span>
             </a>
         </li>
-        <li >
-            <a href="/tag">
+        <li  >
+            <a href="/eventValidation">
+                <i class='bx bxs-shopping-bag-alt' ></i>
+                <span class="text">Event Validation</span>
+            </a>
+        </li>
+        <li>
+            <a href="/role">
+                <i class='bx bxs-doughnut-chart' ></i>
+                <span class="text">Permission</span>
+            </a>
+        </li>
+        <li class="active">
+            <a href="/user">
                 <i class='bx bxs-message-dots' ></i>
-                <span class="text">Tags</span>
-            </a>
-        </li>
-        <li>
-            <a href="/wikiArchive">
-                <i class='bx bxs-archive' ></i>
-                <span class="text">Les Wikis Archivee</span>
-            </a>
-        </li>
-        <li>
-            <a href="/dachboard">
-                <i class='bx bxs-dashboard'></i>
-                <span class="text">Dachboard</span>
+                <span class="text">User</span>
             </a>
         </li>
     </ul>
     <ul class="side-menu">
         <li>
+            <a href="/home" class="logout">
+                <i class='bx bxs-log-out-circle' ></i>
+                <span class="text-info">HOME</span>
+            </a>
             <a href="/logout" class="logout">
                 <i class='bx bxs-log-out-circle' ></i>
                 <span class="text">Logout</span>

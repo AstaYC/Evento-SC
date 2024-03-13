@@ -65,4 +65,9 @@ class AuthController extends Controller
         return redirect('/home');
 
     }
+
+    public function logout(){
+        session()->flush();
+        return redirect('/login');
+    }
 }

@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\DB;
 class EventController extends Controller
 {
     public function displayEvent(){
-        $events = DB::select('SELECT events.* , users.nom AS username , categories.id AS id_categorie , categories.nom FROM events INNER JOIN categories ON events.categorie_id = categories.id INNER JOIN users on events.user_id = users.id;');
+        $user_id = session('user_id');
+        $events = DB::select("SELECT events.* , users.nom AS username , categories.id AS id_categorie , categories.nom FROM events INNER JOIN categories ON events.categorie_id = categories.id INNER JOIN users on events.user_id = users.id where events.user_id = $user_id ;");
         $categories = Categorie::all();
         return view('Organizer.EventTable' , compact('events' , 'categories'));
     }
