@@ -3,11 +3,14 @@
 use App\Http\Controllers\Admin\CategorieController;
 use App\Http\Controllers\Admin\EventValidationController;
 use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\StatisatiqueController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Organizer\EventController;
 use App\Http\Controllers\User\EventDetailController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Organizer\StatisatiqueController as OrganizerStatisatiqueController;
+use App\Http\Controllers\Organizer\StatistiqueController;
 use App\Http\Controllers\User\ReservationController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Middleware\HasPermission;
@@ -41,6 +44,7 @@ Route::post('resetPassword/{token}', [ForgotPasswordController::class, 'changePa
 
 //  Home //
 Route::get('/home' , [HomeController::class , 'home']);
+Route::get('/' , [HomeController::class , 'home']);
 Route::get('/home/eventDetail/{id}' , [EventDetailController::class , 'displayEventDetail']);
 
 // Search //
@@ -87,6 +91,9 @@ Route::middleware(HasPermission::class)->group(function () {
        Route::get('/reservation' , [ReservationController::class , 'DisplayReservation']);
        Route::post('/reservation/validation' , [ReservationController::class , 'acceptReservation']);
        Route::post('/reservationTicket' , [ReservationController::class , 'addRereservation']);
+       
+       Route::get('/statistique' , [StatisatiqueController::class , 'displayStatistique']);
+       Route::get('/statistiqueOrganizer' , [StatistiqueController::class , 'displayStatistique']);
        
     });
 

@@ -32,6 +32,12 @@
                 <span class="text">User</span>
             </a>
         </li>
+        <li>
+            <a href="/statistique">
+                <i class='bx bxs-message-dots' ></i>
+                <span class="text">Statistique</span>
+            </a>
+        </li>
     </ul>
     <ul class="side-menu">
         <li>
