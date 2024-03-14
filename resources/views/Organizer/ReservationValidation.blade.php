@@ -20,6 +20,12 @@
 					<span class="text">Reservation Validation</span>
 				</a>
 			</li>
+			<li>
+				<a href="/statistiqueOrganizer">
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">DashBoard</span>
+				</a>
+			</li>
 		</ul>
 		<ul class="side-menu">
 

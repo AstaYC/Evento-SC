@@ -12,6 +12,9 @@ class EventController extends Controller
     public function displayEvent(){
         $user_id = session('user_id');
         $events = DB::select("SELECT events.* , users.nom AS username , categories.id AS id_categorie , categories.nom FROM events INNER JOIN categories ON events.categorie_id = categories.id INNER JOIN users on events.user_id = users.id where events.user_id = $user_id ;");
+
+        // Select count(events.titre) as totle ,   from events inner join reservation on events.id = reservation.events_id inner join users on events.user_id = users.id Where users.id = 2 group by ()
+
         $categories = Categorie::all();
         return view('Organizer.EventTable' , compact('events' , 'categories'));
     }
